@@ -16,15 +16,22 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-route::get('dashboard',[DashboardController::class,
-'index'])->name('dashboard');
-route::get('login',[AuthController::class,
-'login'])->name('login');
-route::get('user',[UserController::class,    
+Route::get('dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
+Route::get('user',[UserController::class,    
 'index'])->name('user');
-route::get('pendaftaran',[PendaftaranController::class,    
+Route::get('pendaftaran',[PendaftaranController::class,    
 'pendaftaran'])->name('pendaftaran');
+Route::post('pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');

@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(){
-        $data = array(
-            "title"    => "Dashboard", 
-            );
-
-        return view('dashboard', $data);
+    public function index()
+    {
+        return view('admin.dashboard', [
+            'title' => 'Dashboard'
+        ]);
     }
 }

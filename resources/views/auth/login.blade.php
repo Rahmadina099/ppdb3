@@ -40,48 +40,51 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+                                    <form class="user" method="POST" action="{{ route('login') }}">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                
-                                                placeholder="Enter Email Address..." name="email">
+                                                placeholder="Enter Email Address..." name="email" required autofocus value="{{ old('email') }}">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                               name="password" placeholder="Password">
+                                                name="password" placeholder="Password" required>
                                         </div>
-                                        <div class="form-group">
-                                            
-                                        </div>
-                                        <buttion type="submit" href="#" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </buttion>
-                                       
+                                        </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                     kembali ke beranda ?
                                     <a href="{{ route('welcome')}}">Klik di sini</a>
                                     </div>
-                            
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                              
+                                </div>          </div>
+                            </div>                            </div>
+                        </div>      </div>
+                    </div>                    </div>
+                </div>  </div>
 
-            </div>
+            </div>  </div>
 
         </div>
 
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('sbadmin2/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('sbadmin2/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <script src="{{asset('sbadmin2/js/sb-admin-2.min.js')}}"></script>
-
+    <script src="{{ asset('sbadmin2/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('sbadmin2/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('sbadmin2/js/sb-admin-2.min.js') }}"></script>
 </body>
-
 </html>

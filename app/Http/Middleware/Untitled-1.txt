@@ -1,0 +1,47 @@
+{{-- filepath: resources/views/pendaftaran/index.blade.php --}}
+@extends('layouts.app')
+
+@section('content')
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800"><i class="fas fa-tasks"></i> Data Pendaftaran</h1>
+    <a href="{{ route('pendaftaran.create') }}" class="btn btn-primary mb-3">Tambah Pendaftar</a>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($pendaftarans as $p => $pendaftar)
+                        <tr>
+                            <td>{{ $p+1 }}</td>
+                            <td>{{ $pendaftar->nama }}</td>
+                            <td>{{ $pendaftar->email }}</td>
+                            <td>
+                                <a href="{{ route('pendaftaran.edit', $pendaftar->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('pendaftaran.destroy', $pendaftar->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?')">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @if($pendaftarans->isEmpty())
+                        <tr>
+                            <td colspan="4" class="text-center">Belum ada data.</td>
+                        </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
