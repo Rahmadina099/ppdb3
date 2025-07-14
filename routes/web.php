@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CrudPendaftaranController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,4 @@ Route::get('user',[UserController::class,
 Route::get('pendaftaran',[PendaftaranController::class,    
 'pendaftaran'])->name('pendaftaran');
 Route::post('pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+Route::resource('crud-pendaftaran', CrudPendaftaranController::class)->middleware('auth');

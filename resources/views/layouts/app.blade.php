@@ -68,9 +68,10 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('crud-pendaftaran.index') }}">
                     <i class="fas fa-tasks"></i>
-                    <span>Data Pendaftaran</span></a>
+                    <span>Data Pendaftaran</span>
+                </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
